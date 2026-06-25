@@ -55,7 +55,9 @@ npm test
 
 The repository includes `.github/workflows/deploy.yml` for GitHub Pages. The workflow installs dependencies, runs tests, builds the app, uploads the `dist` artifact, and deploys it to Pages.
 
-If deploying to `https://username.github.io/repo-name/`, set the Vite base path to `'/repo-name/'`. This project reads `VITE_BASE_PATH` in `vite.config.js`, and the included workflow sets it automatically from the repository name.
+This repository deploys to the user site root, `https://aim4n-mohd.github.io/`, so the included workflow builds with `VITE_BASE_PATH=/`.
+
+If you copy this project to a project Pages URL like `https://username.github.io/repo-name/`, set the Vite base path to `'/repo-name/'`. This project reads `VITE_BASE_PATH` in `vite.config.js`.
 
 ## localStorage Usage
 
