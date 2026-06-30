@@ -20,7 +20,7 @@ function AdBanner() {
   return (
     <ins
       className="adsbygoogle"
-      style={{ display: 'block' }}
+      style={{ display: 'block', width: '100%', minHeight: '60px' }}
       data-ad-client="ca-pub-7842283632747268"
       data-ad-slot="5192750955"
       data-ad-format="auto"

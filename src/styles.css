@@ -272,6 +272,11 @@ input[type="checkbox"] {
   letter-spacing: 0.08em;
 }
 
+.ad-strip .adsbygoogle {
+  width: min(100%, 970px);
+  min-height: 60px;
+}
+
 canvas {
   display: block;
   width: 100%;
