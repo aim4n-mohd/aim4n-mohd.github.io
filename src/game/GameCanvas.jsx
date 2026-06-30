@@ -7,6 +7,28 @@ function percent(value) {
   return `${Math.round(value * 100)}%`;
 }
 
+function AdBanner() {
+  useEffect(() => {
+    try {
+      window.adsbygoogle = window.adsbygoogle || [];
+      window.adsbygoogle.push({});
+    } catch {
+      // AdSense can throw while approval or ad blocking is in progress.
+    }
+  }, []);
+
+  return (
+    <ins
+      className="adsbygoogle"
+      style={{ display: 'block' }}
+      data-ad-client="ca-pub-7842283632747268"
+      data-ad-slot="5192750955"
+      data-ad-format="auto"
+      data-full-width-responsive="true"
+    />
+  );
+}
+
 function drawEnemy(ctx, enemy, active) {
   const config = ENEMY_CONFIG[enemy.type];
   ctx.save();
@@ -277,7 +299,7 @@ export default function GameCanvas({ settings, onSettingsChange, highScore, audi
         <canvas ref={canvasRef} />
       </div>
       <div className="ad-strip" aria-label="Advertisement">
-        <span>Google Ad space</span>
+        <AdBanner />
       </div>
       {paused && (
         <div className="pause-overlay">
