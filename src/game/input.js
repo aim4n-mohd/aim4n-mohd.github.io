@@ -55,6 +55,13 @@ export function processLetter(state, rawLetter, audio) {
   const letter = String(rawLetter).toLowerCase();
   if (!/^[a-z]$/.test(letter)) return { hit: false };
   state.totalLetterKeys += 1;
+  const typedAtMs = state.elapsedActiveMs ?? 0;
+  const previousTypedAtMs = state.lastTypingAtMs;
+  if (previousTypedAtMs != null) {
+    const gapMs = typedAtMs - previousTypedAtMs;
+    if (gapMs > 0 && gapMs <= 2000) state.typingActiveMs += gapMs;
+  }
+  state.lastTypingAtMs = typedAtMs;
   let target = selectableTargets(state).find((item) => item.id === state.activeTargetId);
   if (!target) {
     target = findTargetForLetter(state, letter);

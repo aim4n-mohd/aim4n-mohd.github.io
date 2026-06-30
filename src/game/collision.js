@@ -1,8 +1,8 @@
-import { ENEMY_CONFIG } from './constants.js';
+import { ENEMY_CONFIG, PLAYFIELD } from './constants.js';
 import { createParticles } from './entities.js';
 
 export function handleEnemyImpacts(state, audio) {
-  const dangerY = state.height - 82;
+  const dangerY = state.height - PLAYFIELD.dangerZoneOffset;
   const impacted = [];
   state.enemies = state.enemies.filter((enemy) => {
     if (enemy.y + enemy.radius >= dangerY) {

@@ -19,7 +19,8 @@ export function calculateScore(enemyType, wordLength, combo = 0, correctKeys = 0
   return Math.round(base * comboMultiplier(combo, difficulty) * accuracyBonus * DIFFICULTY[difficulty].scoreScale);
 }
 
-export function calculateWpm(completedWords, elapsedActiveMs) {
-  if (!elapsedActiveMs) return 0;
-  return Math.round((completedWords / (elapsedActiveMs / 60000)) || 0);
+export function calculateWpm(correctKeys, typingActiveMs) {
+  if (!typingActiveMs || !correctKeys) return 0;
+  const standardWords = correctKeys / 5;
+  return Math.round((standardWords / (typingActiveMs / 60000)) || 0);
 }

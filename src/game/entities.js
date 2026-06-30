@@ -1,8 +1,8 @@
-import { ENEMY_CONFIG } from './constants.js';
+import { ENEMY_CONFIG, PLAYFIELD } from './constants.js';
 import { rand, stableId } from './math.js';
 
 export function createPlayer(width, height, health) {
-  return { x: width / 2, y: height - 58, health };
+  return { x: width / 2, y: height - PLAYFIELD.cannonBottomOffset, health };
 }
 
 export function createEnemy({ type = 'standard', word, wave = 1, width = 960, speedMultiplier = 1 }) {

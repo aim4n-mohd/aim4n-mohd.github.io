@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { ENEMY_CONFIG } from './constants.js';
+import { ENEMY_CONFIG, PLAYFIELD } from './constants.js';
 import { createInitialGameState, currentStats, resizeState, updateGame } from './gameLoop.js';
 import { processLetter } from './input.js';
 
@@ -76,8 +76,8 @@ function render(ctx, state) {
 
   ctx.strokeStyle = 'rgba(92, 244, 255, 0.2)';
   ctx.beginPath();
-  ctx.moveTo(0, height - 82);
-  ctx.lineTo(width, height - 82);
+  ctx.moveTo(0, height - PLAYFIELD.dangerZoneOffset);
+  ctx.lineTo(width, height - PLAYFIELD.dangerZoneOffset);
   ctx.stroke();
 
   if (state.boss) drawEnemy(ctx, state.boss, state.activeTargetId === state.boss.id);
@@ -275,6 +275,9 @@ export default function GameCanvas({ settings, onSettingsChange, highScore, audi
       )}
       <div className="canvas-wrap" ref={wrapRef}>
         <canvas ref={canvasRef} />
+      </div>
+      <div className="ad-strip" aria-label="Advertisement">
+        <span>Google Ad space</span>
       </div>
       {paused && (
         <div className="pause-overlay">

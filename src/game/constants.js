@@ -25,3 +25,8 @@ export const STORAGE_KEYS = {
   highScore: 'typeblaster.highScore',
   dictionaryCache: 'typeblaster.dictionaryCache'
 };
+
+export const PLAYFIELD = {
+  cannonBottomOffset: 92,
+  dangerZoneOffset: 118
+};

@@ -1,4 +1,4 @@
-import { DIFFICULTY } from './constants.js';
+import { DIFFICULTY, PLAYFIELD } from './constants.js';
 import { createPlayer } from './entities.js';
 import { createWave } from './waveManager.js';
 import { handleEnemyImpacts } from './collision.js';
@@ -17,6 +17,8 @@ export function createInitialGameState({ width, height, highScore, settings }) {
     combo: 0,
     correctKeys: 0,
     totalLetterKeys: 0,
+    typingActiveMs: 0,
+    lastTypingAtMs: null,
     completedWords: 0,
     enemiesDefeated: 0,
     bossesDefeated: 0,
@@ -46,7 +48,7 @@ export function resizeState(state, width, height) {
   state.width = width;
   state.height = height;
   state.player.x = width / 2;
-  state.player.y = height - 58;
+  state.player.y = height - PLAYFIELD.cannonBottomOffset;
   [...state.enemies, ...state.drones, state.boss].filter(Boolean).forEach((entity) => {
     entity.x *= sx;
     entity.y *= sy;
@@ -171,7 +173,7 @@ export function currentStats(state) {
     wave: state.wave,
     health: state.health,
     accuracy: accuracy(state.correctKeys, state.totalLetterKeys),
-    wpm: calculateWpm(state.completedWords, state.elapsedActiveMs),
+    wpm: calculateWpm(state.correctKeys, state.typingActiveMs),
     comboMultiplier: comboMultiplier(state.combo, state.settings.difficulty),
     combo: state.combo,
     enemiesDefeated: state.enemiesDefeated,

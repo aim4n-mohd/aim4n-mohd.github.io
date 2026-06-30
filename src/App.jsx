@@ -56,14 +56,12 @@ export default function App() {
             <section className="panel how">
               <h2>How to Play</h2>
               <ul>
-                <li>Type enemy words to shoot them.</li>
-                <li>Once you start a word, you are locked to it until it is completed.</li>
-                <li>The current target is highlighted orange.</li>
-                <li>Correct letters fire lasers.</li>
-                <li>Wrong letters do nothing except waste time.</li>
-                <li>Every 3rd wave has a boss.</li>
-                <li>Boss shield drones must be destroyed before the boss can be damaged.</li>
-                <li>Do not let enemies reach the cannon.</li>
+                <li>Type words to shoot.</li>
+                <li>Orange means locked target.</li>
+                <li>Finish the word to destroy it.</li>
+                <li>Boss waves appear every 3rd wave.</li>
+                <li>Destroy drones before the boss.</li>
+                <li>Protect the cannon.</li>
               </ul>
             </section>
 

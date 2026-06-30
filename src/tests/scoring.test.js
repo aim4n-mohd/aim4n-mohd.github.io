@@ -19,6 +19,7 @@ describe('scoring', () => {
   it('calculates accuracy and WPM', () => {
     expect(accuracy(7, 10)).toBe(0.7);
     expect(accuracy(0, 0)).toBe(1);
-    expect(calculateWpm(12, 120000)).toBe(6);
+    expect(calculateWpm(50, 60000)).toBe(10);
+    expect(calculateWpm(50, 0)).toBe(0);
   });
 });
